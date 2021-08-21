@@ -11,6 +11,18 @@ public class Question2 {
 		System.out.println();
 
 		number = 1234567890;
+		displayNumberToLCD(number, 1, 1);
+		System.out.println();
+
+		number = 1234567890;
+		displayNumberToLCD(number, 1, 2);
+		System.out.println();
+
+		number = 1234567890;
+		displayNumberToLCD(number, 2, 1);
+		System.out.println();
+
+		number = 1234567890;
 		displayNumberToLCD(number, 4, 3);
 		System.out.println();
 	}

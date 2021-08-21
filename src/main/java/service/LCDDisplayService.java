@@ -64,7 +64,10 @@ public class LCDDisplayService {
 		String[] lcdDigit = new String[rowNumber];
 
 		if ("1".equals(digit)) {
-			lcdDigit = getLCDDigit("  ", " |", " |");
+			String topChar = " ";
+			String[] middleChars = { " ", "|", " " };
+			String[] bottomChars = { " ", "|", " " };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("2".equals(digit)) {
 			String topChar = "_";
@@ -72,29 +75,52 @@ public class LCDDisplayService {
 			String[] bottomChars = { "|", " ", "_" };
 			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 		} else if ("3".equals(digit)) {
-			lcdDigit = getLCDDigit(" _ ", " _|", " _|");
+			String topChar = "_";
+			String[] middleChars = { " ", "|", "_" };
+			String[] bottomChars = { " ", "|", "_" };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("4".equals(digit)) {
-			lcdDigit = getLCDDigit("   ", "|_|", "  |");
+			String topChar = " ";
+			String[] middleChars = { "|", "|", "_" };
+			String[] bottomChars = { " ", "|", " " };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("5".equals(digit)) {
-			lcdDigit = getLCDDigit(" _ ", "|_ ", " _|");
+			String topChar = "_";
+			String[] middleChars = { "|", " ", "_" };
+			String[] bottomChars = { " ", "|", "_" };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("6".equals(digit)) {
-			lcdDigit = getLCDDigit(" _ ", "|_ ", "|_|");
+			String topChar = "_";
+			String[] middleChars = { "|", " ", "_" };
+			String[] bottomChars = { "|", "|", "_" };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("7".equals(digit)) {
-			lcdDigit = getLCDDigit(" _ ", "  |", "  |");
+			String topChar = "_";
+			String[] middleChars = { " ", "|", " " };
+			String[] bottomChars = { " ", "|", " " };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("8".equals(digit)) {
-			lcdDigit = getLCDDigit(" _ ", "|_|", "|_|");
+			String topChar = "_";
+			String[] middleChars = { "|", "|", "_" };
+			String[] bottomChars = { "|", "|", "_" };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("9".equals(digit)) {
-			lcdDigit = getLCDDigit(" _ ", "|_|", " _|");
+			String topChar = "_";
+			String[] middleChars = { "|", "|", "_" };
+			String[] bottomChars = { " ", "|", "_" };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 
 		} else if ("0".equals(digit)) {
-			lcdDigit = getLCDDigit(" _ ", "| |", "|_|");
-
+			String topChar = "_";
+			String[] middleChars = { "|", "|", " " };
+			String[] bottomChars = { "|", "|", "_" };
+			processLCDDigit(topChar, middleChars, bottomChars, lcdDigit, width, height);
 		}
 
 		lcdDigits.add(lcdDigit);
