@@ -22,7 +22,7 @@ public class Question1 {
 	private static void displayNumberToLCD(int number) {
 		LCDDisplayService lcdDisplayService = new LCDDisplayService();
 
-		List<String[]> lcdDigits = lcdDisplayService.getLCDDigitsFromNumber(number);
+		List<String[]> lcdDigits = lcdDisplayService.getLCDDigitsFromNumber(number, 1, 1);
 
 		lcdDigits.forEach((String[] lcdDigit) -> {
 			System.out.print(lcdDigit[0]);
