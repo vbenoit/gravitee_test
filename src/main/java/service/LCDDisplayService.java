@@ -58,6 +58,14 @@ public class LCDDisplayService {
 		lcdDigits.add(lcdDigit);
 	}
 
+	private static String[] getLCDDigit(String string, String string2, String string3) {
+		String[] lcdDigit = new String[3];
+		lcdDigit[0] = string;
+		lcdDigit[1] = string2;
+		lcdDigit[2] = string3;
+		return lcdDigit;
+	}
+
 	private void addDigitToLCDDisplay(List<String[]> lcdDigits, String digit, int width, int height) {
 		int rowNumber = getRowNumber(height);
 
@@ -133,45 +141,6 @@ public class LCDDisplayService {
 		processLCDDigitBottom(bottomChars[0], bottomChars[1], bottomChars[2], lcdDigit, width, height);
 	}
 
-	private void processLCDDigitBottom(String leftChar, String rightChar, String bottomChar, String[] lcdDigit,
-			int width, int height) {
-		for (int i = height + 2; i <= getRowNumber(height) - 2; i++) {
-			String line = leftChar;
-			for (int j = 0; j < width; j++) {
-				line += " ";
-			}
-			line += rightChar;
-			lcdDigit[i] = line;
-		}
-
-		String lastLine = " ";
-		for (int i = 0; i < width; i++) {
-			lastLine += bottomChar;
-		}
-		lastLine += " ";
-		lcdDigit[getRowNumber(height) - 1] = lastLine;
-
-	}
-
-	private void processLCDDigitMiddle(String leftChar, String rightChar, String bottomChar, String[] lcdDigit,
-			int width, int height) {
-		for (int i = 1; i <= height; i++) {
-			String line = leftChar;
-			for (int j = 0; j < width; j++) {
-				line += " ";
-			}
-			line += rightChar;
-			lcdDigit[i] = line;
-		}
-
-		String lastLine = " ";
-		for (int i = 0; i < width; i++) {
-			lastLine += bottomChar;
-		}
-		lastLine += " ";
-		lcdDigit[height + 1] = lastLine;
-	}
-
 	private void processLCDDigitTop(String character, String[] lcdDigit, int width) {
 		String line = " ";
 		for (int i = 0; i < width; i++) {
@@ -179,19 +148,47 @@ public class LCDDisplayService {
 		}
 		line += " ";
 		lcdDigit[0] = line;
+	}
 
+	private void processLCDDigitBottom(String leftChar, String rightChar, String bottomChar, String[] lcdDigit,
+			int width, int height) {
+		String[] chars = { leftChar, rightChar, bottomChar };
+		processLCDDigitPart(height + 2, getRowNumber(height) - 1, width, lcdDigit, chars);
+	}
+
+	private void processLCDDigitMiddle(String leftChar, String rightChar, String bottomChar, String[] lcdDigit,
+			int width, int height) {
+		String[] chars = { leftChar, rightChar, bottomChar };
+		processLCDDigitPart(1, height + 1, width, lcdDigit, chars);
+	}
+
+	private void processLCDDigitPart(int start, int end, int width, String[] lcdDigit, String[] chars) {
+		if (chars.length < 3) {
+			return;
+		}
+
+		String leftChar = chars[0];
+		String rightChar = chars[1];
+		String bottomChar = chars[2];
+		for (int i = start; i <= end - 1; i++) {
+			String line = leftChar;
+			for (int j = 0; j < width; j++) {
+				line += " ";
+			}
+			line += rightChar;
+			lcdDigit[i] = line;
+		}
+
+		String lastLine = " ";
+		for (int i = 0; i < width; i++) {
+			lastLine += bottomChar;
+		}
+		lastLine += " ";
+		lcdDigit[end] = lastLine;
 	}
 
 	private int getRowNumber(int height) {
 		return 2 * height + 3;
-	}
-
-	private static String[] getLCDDigit(String string, String string2, String string3) {
-		String[] lcdDigit = new String[3];
-		lcdDigit[0] = string;
-		lcdDigit[1] = string2;
-		lcdDigit[2] = string3;
-		return lcdDigit;
 	}
 
 }
